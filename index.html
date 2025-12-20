@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧼 AB – Sistema</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- PANTALLA LOGIN -->
+  <section id="pantallaLogin" class="pantalla activa">
+    <div class="caja-login animacion-entrada">
+      <div class="logo">🧼</div>
+      <h1>AB</h1>
+      <h2>Iniciar Sesión</h2>
+
+      <div class="grupo-input">
+        <label>👤 Usuario</label>
+        <input type="text" id="txtUsuario" maxlength="50">
+      </div>
+
+      <div class="grupo-input">
+        <label>🔒 Contraseña</label>
+        <div class="caja-password">
+          <input type="password" id="txtPassword" maxlength="50">
+          <button type="button" class="btn-ver" id="btnVerPassword">
+            <span id="iconPassword">👁️</span>
+          </button>
+        </div>
+      </div>
+
+      <button class="btn-primario" id="btnLogin">
+        <span>Iniciar Sesión</span>
+      </button>
+
+      <div style="margin-top:12px; font-size:13px; color:rgba(0,0,0,.6); text-align:center;">
+        Usuario: <b>admin</b> · Contraseña: <b>1234</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA SISTEMA -->
+  <section id="pantallaSistema" class="pantalla">
+    <header class="encabezado">
+      <div class="encabezado-izq">
+        <h1>🧼 AB – Caja</h1>
+      </div>
+
+      <div class="encabezado-centro">
+        <div class="stat-card">
+          <div class="stat-icon">📌</div>
+          <div class="stat-info">
+            <span class="stat-label">Cajero</span>
+            <span class="stat-valor" id="nombreUsuario">admin</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🧾</div>
+          <div class="stat-info">
+            <span class="stat-label">Servicios hoy</span>
+            <span class="stat-valor" id="contServiciosHoy">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="encabezado-der">
+        <button class="btn-secundario" id="btnCorteCaja">
+          💰 Corte de Caja
+        </button>
+        <button class="btn-secundario" id="btnLavarTodos">
+          🚿 Lavar Todos
+        </button>
+        <button class="btn-salir" id="btnSalir">
+          🚪 Cerrar Sesión
+        </button>
+      </div>
+    </header>
+
+    <nav class="nav-bar" style="width:100%; max-width:1200px; margin: 10px auto 0 auto;">
+      <div class="nav-pill">
+        <span>📋 Registro de Servicio</span>
+      </div>
+      <div class="nav-pill" id="btnAbrirReporte" style="cursor:pointer;" role="button" tabindex="0">
+  <span>📊 Reporte</span>
+</div>
+    </nav>
+
+    <main class="layout" style="width:100%; max-width:1200px; margin: 12px auto 40px auto;">
+      <!-- FORMULARIO -->
+      <section class="panel">
+        <h3 style="margin-bottom:10px;">🧾 Registrar Servicio</h3>
+
+        <form id="frmServicio">
+          <div class="grupo-input">
+            <label>Placa</label>
+            <input type="text" id="txtPlaca" maxlength="10">
+          </div>
+
+          <div class="grupo-input">
+            <label>Modelo</label>
+            <input type="text" id="txtModelo" maxlength="60">
+          </div>
+
+          <div class="grupo-input">
+            <label>Cliente</label>
+            <input type="text" id="txtCliente" maxlength="60">
+          </div>
+
+          <div class="grupo-input">
+            <label>Tipo de Vehículo</label>
+            <select id="selTipoVehiculo" class="select">
+              <option value="">-- Seleccionar --</option>
+              <option value="SEDAN">Sedán (₡3000)</option>
+              <option value="SUV">SUV (₡3500)</option>
+              <option value="4X4">4x4 (₡4000)</option>
+            </select>
+          </div>
+
+          <div class="grupo-input">
+            <label>Tipo de Lavado</label>
+            <select id="selTipoLavado" class="select">
+              <option value="">-- Seleccionar --</option>
+              <option value="BASICO">Básico</option>
+              <option value="COMPLETO">Completo</option>
+              <option value="PREMIUM">Premium</option>
+            </select>
+          </div>
+
+          <div class="grupo-checkbox" style="margin: 10px 0;">
+            <label>
+              <input type="checkbox" id="checkEncerado">
+              <span>✨ Extra: Encerado (+₡1000)</span>
+            </label>
+          </div>
+
+          <hr style="opacity:.15; margin: 14px 0;">
+
+          <div class="grupo-input">
+            <label>Paga con (₡)</label>
+            <input type="number" id="txtPagaCon" min="0" step="1">
+          </div>
+
+          <button type="submit" class="btn-primario">
+            ✅ Registrar y Facturar
+          </button>
+        </form>
+      </section>
+
+      
+      <section class="panel">
+        <h3 style="margin-bottom:10px;">Precios Vigentes</h3>
+        <ul class="lista-precios">
+          <li><b>Sedán:</b> ₡3000</li>
+          <li><b>SUV:</b> ₡3500</li>
+          <li><b>4x4:</b> ₡4000</li>
+          <li><b>Extra Encerado:</b> +₡1000</li>
+          <li><b>IVA:</b> 13%</li>
+        </ul>
+
+        
+      </section>
+
+      
+      <section class="panel" style="grid-column: 1 / -1; text-align:center; padding:40px 20px;">
+        <div style="font-size:64px; margin-bottom:15px; opacity:.3;">📊</div>
+        <h3 style="margin-bottom:12px; color:#3b1b5a; font-size:20px;">Reporte de Servicios</h3>
+        <p style="color:rgba(31,18,48,.65); font-weight:700; margin-bottom:20px;">
+          Haz clic en el botón "📊 Reporte" de arriba para ver todos los servicios registrados
+        </p>
+        <button class="btn-secundario" onclick="document.getElementById('btnAbrirReporte').click()" style="width:auto;">
+          📊 Ver Reporte Completo
+        </button>
+      </section>
+    </main>
+
+    <footer class="footer" style="width:100%; max-width:1200px; margin: 0 auto 30px auto;">
+      <p>
+        🔒 Privacidad: Los datos se guardan <b>solo en este navegador</b> usando IndexedDB.
+      </p>
+    </footer>
+  </section>
+
+  
+  <div id="modalNotificacion" class="modal">
+    <div class="notificacion animacion-notificacion">
+      <div class="notificacion-icono" id="notifIcono">⚠️</div>
+      <div class="notificacion-contenido">
+        <h4 id="notifTitulo">Notificación</h4>
+        <p id="notifMensaje">Mensaje aquí</p>
+      </div>
+      <button class="btn-cerrar-notif" id="btnCerrarNoti">✖</button>
+    </div>
+  </div>
+
+  <!-- MODAL TICKET -->
+  <div id="modalTicket" class="modal">
+    <div class="modal-contenido modal-ticket animacion-modal">
+      <div class="modal-header">
+        <h3 id="ticketTitulo">🎫 Factura</h3>
+        <button class="btn-cerrar" id="btnCerrarTicket">✖</button>
+      </div>
+      <div class="modal-body">
+        <div id="ticketContenido"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primario" id="btnCerrarTicket2">✅ Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL REPORTE -->
+  <div id="modalReporte" class="modal">
+    <div class="modal-contenido" style="max-width: 900px;">
+      <div class="modal-header">
+        <h3>📊 Reporte de Servicios</h3>
+        <button class="btn-cerrar" id="btnCerrarReporte">✖</button>
+      </div>
+      <div class="modal-body">
+        <div id="reporteContenido"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secundario" onclick="imprimirReporte()" style="width:auto;">
+          🖨️ Imprimir Reporte
+        </button>
+        <button class="btn-primario" id="btnCerrarReporte2">✅ Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla oculta para que el JS funcione -->
+  <table style="display:none;">
+    <tbody id="tbodyServicios"></tbody>
+    <tfoot>
+      <tr>
+        <td id="tfootTotalGeneral"></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <script src="apps.js"></script>
+</body>
+</html>
